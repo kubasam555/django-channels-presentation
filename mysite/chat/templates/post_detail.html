@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}Detail{% endblock %}
+
+{% block content %}
+<div class="container">
+<div class="row">
+    <div class="col">
+        <h1>{{ object.title }}</h1>
+        Author: <span>{{ object.user.username }}</span>
+        <p>{{ object.description }}</p>
+    </div>
+</div>
+</div>
+{% endblock %}

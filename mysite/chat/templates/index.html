@@ -1,0 +1,49 @@
+{% extends 'base.html' %}
+
+{% block title %}Homepage{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="row">
+        <div class="col">
+          <p>Notifications</p>
+            <ul id="notification-log">
+
+            </ul>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block js_scripts %}
+<script>
+
+    var chatSocket = new WebSocket(
+        'ws://' + window.location.host +
+        '/ws/notification/');
+
+    chatSocket.onmessage = function(e) {
+        var data = JSON.parse(e.data);
+        var ul = document.getElementById('notification-log');
+        var li = document.createElement("li");
+        var a = document.createElement("a");
+        if (data.post) {
+            var post = data.post;
+            a.appendChild(document.createTextNode(' Check'));
+            a.href = 'posts/' + post.id;
+            li.appendChild(document.createTextNode(post.user + ' added new post'));
+        } else {
+            var message = data.message;
+            a.appendChild(document.createTextNode(' Check'));
+            a.href = 'chat/' + message.user;
+            li.appendChild(document.createTextNode(message.user + ' sent you: ' + message.message));
+        }
+        li.appendChild(a);
+        ul.appendChild(li)
+    };
+
+    chatSocket.onclose = function(e) {
+        console.error('Chat socket closed unexpectedly');
+    };
+</script>
+{% endblock %}

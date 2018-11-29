@@ -1,0 +1,56 @@
+# Environments
+.env
+env/
+venv/
+
+# Pycharm
+.idea/
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# File with local environment variables
+config.env
+
+# Built files by webpack
+aps/webpack/build/
+aps/webpack/webpack-stats.json
+
+# Node modules
+aps/webpack/node_modules/
+
+# Jest coverage
+aps/webpack/coverage
+
+# SQLite database
+db.sqlite3
+
+# Configuration files
+config.env
+
+# Collected static files and uploaded media files
+staticfiles/
+media/
+
+# Misc
+.DS_Store
+
+# Pytest related
+.pytest_cache
+.coverage
+test_results.xml
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+docker-compose-integration.local.yml
+secrets.env
+
+aps/aps/*.svg
+*.lock
+
+celerybeat-schedule
+celerybeat.pid
